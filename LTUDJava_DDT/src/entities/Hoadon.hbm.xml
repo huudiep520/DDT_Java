@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 15, 2016 4:34:09 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entities.Hoadon" table="hoadon" catalog="quanlynhahang" optimistic-lock="version">
+        <id name="maHd" type="java.lang.Integer">
+            <column name="MaHD" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="banghe" class="entities.Banghe" fetch="select">
+            <column name="MaBan" length="10" not-null="true" />
+        </many-to-one>
+        <many-to-one name="nhanvien" class="entities.Nhanvien" fetch="select">
+            <column name="MaNhanVien" length="10" not-null="true" />
+        </many-to-one>
+        <property name="tenKhachHang" type="string">
+            <column name="TenKhachHang" not-null="true" />
+        </property>
+        <property name="tenNhanVien" type="string">
+            <column name="TenNhanVien" />
+        </property>
+        <property name="soLuongKhach" type="int">
+            <column name="SoLuongKhach" not-null="true" />
+        </property>
+        <property name="ngayGio" type="timestamp">
+            <column name="NgayGio" length="19" not-null="true" />
+        </property>
+        <property name="tongTien" type="int">
+            <column name="TongTien" not-null="true" />
+        </property>
+        <property name="thanhToan" type="boolean">
+            <column name="ThanhToan" not-null="true" />
+        </property>
+        <set name="chitiethoadons" table="chitiethoadon" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MaHD" not-null="true" />
+            </key>
+            <one-to-many class="entities.Chitiethoadon" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 15, 2016 4:34:09 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entities.Menu" table="menu" catalog="quanlynhahang" optimistic-lock="version">
+        <id name="maMenu" type="string">
+            <column name="MaMenu" length="10" />
+            <generator class="assigned" />
+        </id>
+        <property name="tenGoi" type="string">
+            <column name="TenGoi" not-null="true" />
+        </property>
+        <property name="hinh" type="string">
+            <column name="Hinh" length="50" not-null="true" />
+        </property>
+        <property name="gia" type="int">
+            <column name="Gia" not-null="true" />
+        </property>
+        <property name="khuyenMai" type="float">
+            <column name="KhuyenMai" precision="12" scale="0" not-null="true" />
+        </property>
+        <set name="chitiethoadons" table="chitiethoadon" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MaMenu" length="10" not-null="true" />
+            </key>
+            <one-to-many class="entities.Chitiethoadon" />
+        </set>
+        <set name="chitietgoimenus" table="chitietgoimenu" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MaMenu" length="10" not-null="true" />
+            </key>
+            <one-to-many class="entities.Chitietgoimenu" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 15, 2016 4:34:09 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entities.Lichcalamviec" table="lichcalamviec" catalog="quanlynhahang" optimistic-lock="version">
+        <id name="maLich" type="java.lang.Integer">
+            <column name="MaLich" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="calamviec" class="entities.Calamviec" fetch="select">
+            <column name="MaCa" length="10" not-null="true" />
+        </many-to-one>
+        <many-to-one name="nhanvien" class="entities.Nhanvien" fetch="select">
+            <column name="MaNhanVien" length="10" not-null="true" />
+        </many-to-one>
+        <many-to-one name="trangthai" class="entities.Trangthai" fetch="select">
+            <column name="MaTrangThai" length="10" />
+        </many-to-one>
+        <property name="thoiGian" type="date">
+            <column name="ThoiGian" length="10" not-null="true" />
+        </property>
+        <property name="thoiGianTre" type="java.lang.Integer">
+            <column name="ThoiGianTre" />
+        </property>
+    </class>
+</hibernate-mapping>

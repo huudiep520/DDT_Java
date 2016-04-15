@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 15, 2016 4:34:09 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entities.Nhanvien" table="nhanvien" catalog="quanlynhahang" optimistic-lock="version">
+        <id name="maNhanVien" type="string">
+            <column name="MaNhanVien" length="10" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="trinhdovitinh" class="entities.Trinhdovitinh" fetch="select">
+            <column name="MaTDVT" length="10" not-null="true" />
+        </many-to-one>
+        <many-to-one name="vitrinhanvien" class="entities.Vitrinhanvien" fetch="select">
+            <column name="MaViTri" length="10" not-null="true" />
+        </many-to-one>
+        <property name="matKhau" type="string">
+            <column name="MatKhau" length="16" not-null="true" />
+        </property>
+        <property name="cauHoiBaoMat" type="string">
+            <column name="CauHoiBaoMat" not-null="true" />
+        </property>
+        <property name="dapAnBaoMat" type="string">
+            <column name="DapAnBaoMat" not-null="true" />
+        </property>
+        <property name="hoTen" type="string">
+            <column name="HoTen" not-null="true" />
+        </property>
+        <property name="sinhNhat" type="date">
+            <column name="SinhNhat" length="10" />
+        </property>
+        <property name="sodt" type="int">
+            <column name="Sodt" not-null="true" />
+        </property>
+        <property name="cmnd" type="int">
+            <column name="Cmnd" not-null="true" />
+        </property>
+        <property name="ngayBatDau" type="date">
+            <column name="NgayBatDau" length="10" not-null="true" />
+        </property>
+        <property name="trangPhuc" type="boolean">
+            <column name="TrangPhuc" not-null="true" />
+        </property>
+        <property name="luongTheoCa" type="int">
+            <column name="LuongTheoCa" not-null="true" />
+        </property>
+        <property name="nghiViec" type="boolean">
+            <column name="NghiViec" not-null="true" />
+        </property>
+        <set name="hoadons" table="hoadon" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MaNhanVien" length="10" not-null="true" />
+            </key>
+            <one-to-many class="entities.Hoadon" />
+        </set>
+        <set name="bangluongs" table="bangluong" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MaNhanVien" length="10" not-null="true" />
+            </key>
+            <one-to-many class="entities.Bangluong" />
+        </set>
+        <set name="banghes" table="banghe" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MaNhanVienTruc" length="10" />
+            </key>
+            <one-to-many class="entities.Banghe" />
+        </set>
+        <set name="lichcalamviecs" table="lichcalamviec" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MaNhanVien" length="10" not-null="true" />
+            </key>
+            <one-to-many class="entities.Lichcalamviec" />
+        </set>
+    </class>
+</hibernate-mapping>

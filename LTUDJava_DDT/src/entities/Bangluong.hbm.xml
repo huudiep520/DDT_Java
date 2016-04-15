@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 15, 2016 4:34:09 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entities.Bangluong" table="bangluong" catalog="quanlynhahang" optimistic-lock="version">
+        <id name="maLuong" type="java.lang.Integer">
+            <column name="MaLuong" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="nhanvien" class="entities.Nhanvien" fetch="select">
+            <column name="MaNhanVien" length="10" not-null="true" />
+        </many-to-one>
+        <property name="ngayGioNhan" type="timestamp">
+            <column name="NgayGioNhan" length="19" not-null="true" />
+        </property>
+        <property name="tongCaLam" type="int">
+            <column name="TongCaLam" not-null="true" />
+        </property>
+        <property name="vangCoPhep" type="java.lang.Integer">
+            <column name="VangCoPhep" />
+        </property>
+        <property name="vangKhongPhep" type="java.lang.Integer">
+            <column name="VangKhongPhep" />
+        </property>
+        <property name="thoiGianTre" type="java.lang.Integer">
+            <column name="ThoiGianTre" />
+        </property>
+        <property name="tongLuong" type="int">
+            <column name="TongLuong" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

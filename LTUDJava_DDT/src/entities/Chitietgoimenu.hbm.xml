@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 15, 2016 4:34:09 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entities.Chitietgoimenu" table="chitietgoimenu" catalog="quanlynhahang" optimistic-lock="version">
+        <id name="maCtg" type="java.lang.Integer">
+            <column name="MaCTG" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="banghe" class="entities.Banghe" fetch="select">
+            <column name="MaBan" length="10" not-null="true" />
+        </many-to-one>
+        <many-to-one name="menu" class="entities.Menu" fetch="select">
+            <column name="MaMenu" length="10" not-null="true" />
+        </many-to-one>
+        <many-to-one name="trangthai" class="entities.Trangthai" fetch="select">
+            <column name="MaTrangThai" length="10" not-null="true" />
+        </many-to-one>
+        <property name="tenGoi" type="string">
+            <column name="TenGoi" not-null="true" />
+        </property>
+        <property name="soLuongGoi" type="int">
+            <column name="SoLuongGoi" not-null="true" />
+        </property>
+        <property name="ghiChu" type="string">
+            <column name="GhiChu" not-null="true" />
+        </property>
+        <property name="thoiGianGoi" type="time">
+            <column name="ThoiGianGoi" length="8" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
