@@ -1,0 +1,4 @@
+- tao package: chu thuong
+- tao private: "_" + "ten viet thuong het"
+- tao method: Viet Hoa Chu Dau
+- tao bien: viet Thuong Tu Dau Tien
