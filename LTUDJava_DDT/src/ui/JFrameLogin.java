@@ -150,7 +150,7 @@ public class JFrameLogin extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(40, 40, 40)
                         .addComponent(jLabel5)
-                        .addGap(199, 199, 199)
+                        .addGap(189, 189, 189)
                         .addComponent(jLabel1)))
                 .addContainerGap(60, Short.MAX_VALUE))
         );
