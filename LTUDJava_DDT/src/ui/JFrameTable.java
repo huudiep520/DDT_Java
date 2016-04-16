@@ -8,6 +8,7 @@ package ui;
 import dao.BanGheDAO;
 import entities.*;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -48,13 +49,16 @@ public class JFrameTable extends javax.swing.JFrame {
     private void LoadTable(){
         //DefaultTableModel dtm = new DefaultTableModel();
         List<Banghe> lstBG = this.bgd.GetAll();
+        int temp = 5 - lstBG.size()%5;
         if(lstBG.size()>0){
-            int temp = 5 - lstBG.size()%5;
+            
             for(int i=0; i<lstBG.size();i++){
                 JButton bt = new JButton();
                 bt.setPreferredSize(new Dimension(170, 150));
                 Border bd = BorderFactory.createEtchedBorder(EtchedBorder.RAISED);
                 bt.setBorder(bd);
+                Font f = new Font("Tamaho", Font.BOLD, 14);
+                bt.setFont(f);
                 bt.setVisible(true);
                 jPanelTable.add(bt);
                 
@@ -69,6 +73,17 @@ public class JFrameTable extends javax.swing.JFrame {
                 bt.setText(lstBG.get(i).getMaBan());
                 
             }
+            if(temp<5){
+                for(int i=0;i<temp;i++){
+                    JButton bt = new JButton();
+                    bt.setPreferredSize(new Dimension(170, 150));
+                    Border bd = BorderFactory.createEtchedBorder(EtchedBorder.RAISED);
+                    bt.setBorder(bd);
+                    bt.setVisible(true);
+                    jPanelTable.add(bt);
+                }
+            }
+            
         }
     }
     
