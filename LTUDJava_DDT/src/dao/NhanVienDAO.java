@@ -29,6 +29,8 @@ public class NhanVienDAO {
         /*thực thi store -> kq*/
         List<Nhanvien> lstNV = qr.list();
         
+        ss.close();
+        
         return lstNV;
     }
     public List<Nhanvien> LayDanhSachNV(){

@@ -15,6 +15,7 @@ import java.util.List;
 public class JFrameLogin extends javax.swing.JFrame {
 
     private final NhanVienDAO nvd = new NhanVienDAO();
+    static Nhanvien nv = new Nhanvien();
     
     public JFrameLogin() {
         this.setUndecorated(true); // bỏ thao tác max min 
@@ -176,10 +177,13 @@ public class JFrameLogin extends javax.swing.JFrame {
         String strUser = jTextFieldUser.getText();
         String strPass = new String(jPasswordFieldPass.getPassword());
         
-        List<Nhanvien> nv = nvd.CheckLogin(strUser, strPass);
-        if(nv.size()>0){
-            jLabel5.setText("true");
-          
+        List<Nhanvien> lstNV = nvd.CheckLogin(strUser, strPass);
+        if(lstNV.size()>0){
+            //jLabel5.setText("true"); 
+            nv = lstNV.get(0);
+            JFrameTable jf = new JFrameTable();
+            this.setVisible(false);
+            
         }
         else{
             jLabel5.setText("false");
