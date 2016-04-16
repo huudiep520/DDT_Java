@@ -15,9 +15,10 @@ import org.hibernate.SessionFactory;
 
 public class NhanVienDAO {
     private final SessionFactory sf = HibernateUtil.getSessionFactory();
-    Session ss = sf.getCurrentSession();
+    
     
     public List<Nhanvien> CheckLogin(String maNV, String mkNV){
+        Session ss = sf.getCurrentSession();
         ss.beginTransaction(); // khởi tạo ss
         
         /*gọi store*/
