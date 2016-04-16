@@ -1,4 +1,4 @@
-/*
+﻿/*
 Navicat MySQL Data Transfer
 
 Source Server         : Connect-Ecommerce
@@ -444,6 +444,20 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_GetNhanVienByIdAndName`(
 )
 BEGIN
 	select * from nhanvien where MaNhanVien = idNV and HoTen = nameNV;
+END
+;;
+DELIMITER ;
+-- ----------------------------
+-- Procedure structure for `sp_CheckLogin`
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `sp_CheckLogin`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_CheckLogin`(
+	idNV varchar(10),
+    mkNV varchar(255)
+)
+BEGIN
+	select * from nhanvien where MaNhanVien = idNV and HoTen = mkNV ;
 END
 ;;
 DELIMITER ;

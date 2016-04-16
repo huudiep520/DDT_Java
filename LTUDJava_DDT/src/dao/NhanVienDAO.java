@@ -31,4 +31,18 @@ public class NhanVienDAO {
         
         return lstNV;
     }
+    public List<Nhanvien> LayDanhSachNV(){
+        Session ss = sf.getCurrentSession();
+        ss.beginTransaction();
+        Query qr = ss.createSQLQuery("CALL sp_GetNhanVien()").addEntity(Nhanvien.class);
+        List<Nhanvien> lstNV = qr.list();
+        return lstNV;
+    }
+    public Nhanvien GetNV_ByID(String maNV){
+        Session ss = sf.getCurrentSession();
+        ss.beginTransaction();
+        Query qr = ss.createSQLQuery("CALL sp_GetNhanVienByID(:manv)").addEntity(Nhanvien.class);
+        qr.setString("manv", maNV);
+        return (Nhanvien)qr.list();
+    }
 }
