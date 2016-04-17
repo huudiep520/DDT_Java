@@ -96,11 +96,11 @@ public class JFrameTable extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jPanelOptionTable = new javax.swing.JPanel();
         jButtonSelectTable = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jLabelOrder = new javax.swing.JLabel();
+        jLabelInfo = new javax.swing.JLabel();
         jPanelTable = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -138,8 +138,6 @@ public class JFrameTable extends javax.swing.JFrame {
         jButtonSelectTable.setText("0");
         jButtonSelectTable.setEnabled(false);
 
-        jButton3.setText("Xem thông tin");
-
         jButton4.setText("Gộp - Chuyển");
 
         jButton5.setText("Tạm tính");
@@ -157,6 +155,16 @@ public class JFrameTable extends javax.swing.JFrame {
             }
         });
 
+        jLabelInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/btn_goimon.png"))); // NOI18N
+        jLabelInfo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabelInfoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabelInfoMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelOptionTableLayout = new javax.swing.GroupLayout(jPanelOptionTable);
         jPanelOptionTable.setLayout(jPanelOptionTableLayout);
         jPanelOptionTableLayout.setHorizontalGroup(
@@ -165,15 +173,15 @@ public class JFrameTable extends javax.swing.JFrame {
                 .addComponent(jButtonSelectTable, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
                 .addComponent(jLabelOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
+                .addGap(43, 43, 43)
+                .addComponent(jLabelInfo)
+                .addGap(184, 184, 184)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48)
                 .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelOptionTableLayout.setVerticalGroup(
             jPanelOptionTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,11 +190,14 @@ public class JFrameTable extends javax.swing.JFrame {
                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanelOptionTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButtonSelectTable, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabelOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelOptionTableLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelInfo)
+                .addGap(19, 19, 19))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -237,6 +248,17 @@ public class JFrameTable extends javax.swing.JFrame {
         jLabelOrder.setIcon(II);
     }//GEN-LAST:event_jLabelOrderMouseEntered
 
+    private void jLabelInfoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelInfoMouseEntered
+         ImageIcon II = new ImageIcon(getClass().getResource("/Images/btn_hover_goimon.png"));
+        jLabelInfo.setIcon(II);
+    }//GEN-LAST:event_jLabelInfoMouseEntered
+
+    private void jLabelInfoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelInfoMouseExited
+        
+        ImageIcon II = new ImageIcon(getClass().getResource("/Images/btn_goimon.png"));
+        jLabelInfo.setIcon(II);
+    }//GEN-LAST:event_jLabelInfoMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -274,11 +296,11 @@ public class JFrameTable extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButtonSelectTable;
+    private javax.swing.JLabel jLabelInfo;
     private javax.swing.JLabel jLabelOrder;
     private javax.swing.JPanel jPanelOption;
     private javax.swing.JPanel jPanelOptionTable;
