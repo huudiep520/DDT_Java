@@ -8,6 +8,7 @@ package ui;
 import dao.BanGheDAO;
 import entities.*;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -16,6 +17,8 @@ import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 
@@ -48,7 +51,7 @@ public class JFrameTable extends javax.swing.JFrame {
     }
 
     private void LoadTable(){
-        //DefaultTableModel dtm = new DefaultTableModel();
+       
         List<Banghe> lstBG = this.bgd.GetAll();
         int temp = 5 - lstBG.size()%5;
         if(lstBG.size()>0){
@@ -58,7 +61,7 @@ public class JFrameTable extends javax.swing.JFrame {
                 bt.setPreferredSize(new Dimension(170, 150));
                 Border bd = BorderFactory.createEtchedBorder(EtchedBorder.RAISED);
                 bt.setBorder(bd);
-                Font f = new Font("Tamaho", Font.BOLD, 14);
+                Font f = new Font("Tamaho", Font.BOLD, 18);
                 bt.setFont(f);
                 bt.setVisible(true);
                 jPanelTable.add(bt);
@@ -86,6 +89,7 @@ public class JFrameTable extends javax.swing.JFrame {
             }
             
         }
+
     }
     
     @SuppressWarnings("unchecked")
@@ -96,11 +100,11 @@ public class JFrameTable extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jPanelOptionTable = new javax.swing.JPanel();
         jButtonSelectTable = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
         jLabelOrder = new javax.swing.JLabel();
-        jLabelInfo = new javax.swing.JLabel();
+        jLabelInfor = new javax.swing.JLabel();
+        jLabelJoninMove = new javax.swing.JLabel();
+        jLabelProvisional = new javax.swing.JLabel();
+        jLabelPayment = new javax.swing.JLabel();
         jPanelTable = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -128,24 +132,17 @@ public class JFrameTable extends javax.swing.JFrame {
             .addGroup(jPanelOptionLayout.createSequentialGroup()
                 .addGap(297, 297, 297)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(354, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanelOptionTable.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thao tác bàn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
-        jButtonSelectTable.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButtonSelectTable.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jButtonSelectTable.setForeground(new java.awt.Color(255, 51, 0));
         jButtonSelectTable.setText("0");
         jButtonSelectTable.setEnabled(false);
 
-        jButton4.setText("Gộp - Chuyển");
-
-        jButton5.setText("Tạm tính");
-
-        jButton6.setText("Thanh Toán");
-
-        jLabelOrder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/button_default_GoiMon.png"))); // NOI18N
-        jLabelOrder.setText("adsasda");
+        jLabelOrder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/btn_goimon.png"))); // NOI18N
         jLabelOrder.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabelOrderMouseEntered(evt);
@@ -155,13 +152,43 @@ public class JFrameTable extends javax.swing.JFrame {
             }
         });
 
-        jLabelInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/btn_goimon.png"))); // NOI18N
-        jLabelInfo.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabelInfor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/btn_thongtinban.png"))); // NOI18N
+        jLabelInfor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabelInfoMouseEntered(evt);
+                jLabelInforMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabelInfoMouseExited(evt);
+                jLabelInforMouseExited(evt);
+            }
+        });
+
+        jLabelJoninMove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/btn_gop_chuyen.png"))); // NOI18N
+        jLabelJoninMove.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabelJoninMoveMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabelJoninMoveMouseExited(evt);
+            }
+        });
+
+        jLabelProvisional.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/btn_tamtinh.png"))); // NOI18N
+        jLabelProvisional.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabelProvisionalMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabelProvisionalMouseExited(evt);
+            }
+        });
+
+        jLabelPayment.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/btn_thanhtoan.png"))); // NOI18N
+        jLabelPayment.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabelPaymentMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabelPaymentMouseExited(evt);
             }
         });
 
@@ -172,32 +199,31 @@ public class JFrameTable extends javax.swing.JFrame {
             .addGroup(jPanelOptionTableLayout.createSequentialGroup()
                 .addComponent(jButtonSelectTable, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
-                .addComponent(jLabelOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
-                .addComponent(jLabelInfo)
-                .addGap(184, 184, 184)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelOrder)
                 .addGap(50, 50, 50)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabelInfor)
+                .addGap(50, 50, 50)
+                .addComponent(jLabelJoninMove)
+                .addGap(50, 50, 50)
+                .addComponent(jLabelProvisional)
+                .addGap(50, 50, 50)
+                .addComponent(jLabelPayment)
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         jPanelOptionTableLayout.setVerticalGroup(
             jPanelOptionTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelOptionTableLayout.createSequentialGroup()
-                .addGroup(jPanelOptionTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanelOptionTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButtonSelectTable, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabelOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelOptionTableLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelInfo)
-                .addGap(19, 19, 19))
+                .addComponent(jButtonSelectTable, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 15, Short.MAX_VALUE))
+            .addGroup(jPanelOptionTableLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(jPanelOptionTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelPayment)
+                    .addComponent(jLabelProvisional)
+                    .addComponent(jLabelJoninMove)
+                    .addComponent(jLabelInfor)
+                    .addComponent(jLabelOrder))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -209,12 +235,12 @@ public class JFrameTable extends javax.swing.JFrame {
                 .addComponent(jPanelOption, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(jPanelTable, javax.swing.GroupLayout.PREFERRED_SIZE, 920, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanelOptionTable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanelOptionTable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(72, 72, 72)
+                        .addComponent(jPanelTable, javax.swing.GroupLayout.PREFERRED_SIZE, 938, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,7 +251,8 @@ public class JFrameTable extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanelOptionTable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanelTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jPanelTable, javax.swing.GroupLayout.PREFERRED_SIZE, 588, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -236,28 +263,56 @@ public class JFrameTable extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jLabelOrderMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelOrderMouseExited
-        ImageIcon II;
-        II = new ImageIcon(getClass().getResource("/Images/button_default_GoiMon.png"));
-        jLabelOrder.setIcon(II);
-    }//GEN-LAST:event_jLabelOrderMouseExited
-
     private void jLabelOrderMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelOrderMouseEntered
-        ImageIcon II;
-        II = new ImageIcon(getClass().getResource("/Images/button_hover_GoiMon.png"));
+        ImageIcon II = new ImageIcon(getClass().getResource("/Images/btn_hover_goimon.png"));
         jLabelOrder.setIcon(II);
     }//GEN-LAST:event_jLabelOrderMouseEntered
 
-    private void jLabelInfoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelInfoMouseEntered
-         ImageIcon II = new ImageIcon(getClass().getResource("/Images/btn_hover_goimon.png"));
-        jLabelInfo.setIcon(II);
-    }//GEN-LAST:event_jLabelInfoMouseEntered
-
-    private void jLabelInfoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelInfoMouseExited
+    private void jLabelOrderMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelOrderMouseExited
         
         ImageIcon II = new ImageIcon(getClass().getResource("/Images/btn_goimon.png"));
-        jLabelInfo.setIcon(II);
-    }//GEN-LAST:event_jLabelInfoMouseExited
+        jLabelOrder.setIcon(II);
+    }//GEN-LAST:event_jLabelOrderMouseExited
+
+    private void jLabelInforMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelInforMouseEntered
+        ImageIcon II = new ImageIcon(getClass().getResource("/Images/btn_hover_thongtinban.png"));
+        jLabelInfor.setIcon(II);
+    }//GEN-LAST:event_jLabelInforMouseEntered
+
+    private void jLabelInforMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelInforMouseExited
+        ImageIcon II = new ImageIcon(getClass().getResource("/Images/btn_thongtinban.png"));
+        jLabelInfor.setIcon(II);
+    }//GEN-LAST:event_jLabelInforMouseExited
+
+    private void jLabelJoninMoveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelJoninMoveMouseEntered
+        ImageIcon II = new ImageIcon(getClass().getResource("/Images/btn_hover_gop_chuyen.png"));
+        jLabelJoninMove.setIcon(II);
+    }//GEN-LAST:event_jLabelJoninMoveMouseEntered
+
+    private void jLabelJoninMoveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelJoninMoveMouseExited
+         ImageIcon II = new ImageIcon(getClass().getResource("/Images/btn_gop_chuyen.png"));
+        jLabelJoninMove.setIcon(II);
+    }//GEN-LAST:event_jLabelJoninMoveMouseExited
+
+    private void jLabelProvisionalMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelProvisionalMouseEntered
+         ImageIcon II = new ImageIcon(getClass().getResource("/Images/btn_hover_tamtinh.png"));
+        jLabelProvisional.setIcon(II);
+    }//GEN-LAST:event_jLabelProvisionalMouseEntered
+
+    private void jLabelProvisionalMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelProvisionalMouseExited
+         ImageIcon II = new ImageIcon(getClass().getResource("/Images/btn_tamtinh.png"));
+        jLabelProvisional.setIcon(II);
+    }//GEN-LAST:event_jLabelProvisionalMouseExited
+
+    private void jLabelPaymentMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPaymentMouseEntered
+        ImageIcon II = new ImageIcon(getClass().getResource("/Images/btn_hover_thanhtoan.png"));
+        jLabelPayment.setIcon(II);
+    }//GEN-LAST:event_jLabelPaymentMouseEntered
+
+    private void jLabelPaymentMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPaymentMouseExited
+         ImageIcon II = new ImageIcon(getClass().getResource("/Images/btn_thanhtoan.png"));
+        jLabelPayment.setIcon(II);
+    }//GEN-LAST:event_jLabelPaymentMouseExited
 
     /**
      * @param args the command line arguments
@@ -296,12 +351,12 @@ public class JFrameTable extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButtonSelectTable;
-    private javax.swing.JLabel jLabelInfo;
+    private javax.swing.JLabel jLabelInfor;
+    private javax.swing.JLabel jLabelJoninMove;
     private javax.swing.JLabel jLabelOrder;
+    private javax.swing.JLabel jLabelPayment;
+    private javax.swing.JLabel jLabelProvisional;
     private javax.swing.JPanel jPanelOption;
     private javax.swing.JPanel jPanelOptionTable;
     private javax.swing.JPanel jPanelTable;
