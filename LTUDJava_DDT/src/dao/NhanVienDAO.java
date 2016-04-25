@@ -29,22 +29,53 @@ public class NhanVienDAO {
         /*thực thi store -> kq*/
         List<Nhanvien> lstNV = qr.list();
         
-        ss.close();
-        
         return lstNV;
     }
     public List<Nhanvien> LayDanhSachNV(){
-        Session ss = sf.getCurrentSession();
-        ss.beginTransaction();
-        Query qr = ss.createSQLQuery("CALL sp_GetNhanVien()").addEntity(Nhanvien.class);
-        List<Nhanvien> lstNV = qr.list();
-        return lstNV;
+        List<Nhanvien> lstNV = null;
+        try {
+            //Session ss = sf.getCurrentSession();
+            Session ss = sf.openSession();
+            //ss.beginTransaction();
+        
+            Query qr = ss.createSQLQuery("CALL sp_GetNhanVien()").addEntity(Nhanvien.class);
+            lstNV = qr.list();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+       return lstNV;
     }
     public Nhanvien GetNV_ByID(String maNV){
-        Session ss = sf.getCurrentSession();
-        ss.beginTransaction();
-        Query qr = ss.createSQLQuery("CALL sp_GetNhanVienByID(:manv)").addEntity(Nhanvien.class);
-        qr.setString("manv", maNV);
-        return (Nhanvien)qr.list();
+        Nhanvien nv = new Nhanvien();
+        try {
+             //Session ss = sf.getCurrentSession();
+             //ss.beginTransaction();
+             Session ss = sf.openSession();
+             Query qr = ss.createSQLQuery("CALL sp_GetNhanVienByID(:manv)").addEntity(Nhanvien.class);
+             //Query qr = ss.createSQLQuery("CALL sp_GetNhanVienByID(:manv)");
+             qr.setString("manv", maNV);
+             nv = (Nhanvien)qr.uniqueResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return nv;
+    }
+
+    public boolean DeleteNV_ByID(Nhanvien nv){
+        try {
+            //sf.getCurrentSession().beginTransaction();
+            Session ss = sf.openSession();
+            ss = sf.getCurrentSession();
+            ss.getTransaction().begin();
+            Query qr = ss.createSQLQuery("CALL sp_DeleteNV_ByID(:manv)").addEntity(Nhanvien.class);
+            qr.setString("manv", nv.getMaNhanVien());
+            qr.executeUpdate();
+            ss.getTransaction().commit();
+            return true;
+        } catch (Exception e) {
+            sf.getCurrentSession().getTransaction().rollback();
+            return false;
+        }
     }
 }
