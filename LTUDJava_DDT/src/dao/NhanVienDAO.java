@@ -78,4 +78,26 @@ public class NhanVienDAO {
             return false;
         }
     }
+    public boolean UpdateNV_ByID(Nhanvien nv){
+        try {
+            Session ss = sf.openSession();
+            ss = sf.getCurrentSession();
+            ss.getTransaction().begin();
+            Query qr = ss.createSQLQuery("CALL sp_UpdateNV(:manv,:hoten,:sinhnhat,:sdt,:ngayvao,:cmnd,:luongtheoca)").addEntity(Nhanvien.class);
+            qr.setString("manv", nv.getMaNhanVien());
+            qr.setString("hoten", nv.getHoTen());
+            qr.setDate("sinhnhat", nv.getSinhNhat());
+            qr.setInteger("sdt", nv.getSodt());
+            qr.setDate("ngayvao", nv.getNgayBatDau());
+            qr.setInteger("cmnd", nv.getCmnd());
+            qr.setInteger("luongtheoca", nv.getLuongTheoCa());
+            qr.executeUpdate();
+            ss.getTransaction().commit();
+            return true;
+        } catch (Exception e) {
+            e.toString();
+            sf.getCurrentSession().getTransaction().rollback();
+            return false;
+        }
+    }
 }
