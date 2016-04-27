@@ -100,4 +100,32 @@ public class NhanVienDAO {
             return false;
         }
     }
+     public boolean InsertNV(Nhanvien nv){
+         try {
+             Session ss = sf.openSession();
+             ss = sf.getCurrentSession();
+             ss.beginTransaction();
+             Query qr = ss.createSQLQuery("call sp_InsertNV(:MaNV,:MK,:CauHoi,:DapAn,:HoTen,:SN,:SDT,:CMND,:MaVT,:MaTDVT,:NgayVao,:TrangPhuc,:LuongTheoCa,0)").addEntity(Nhanvien.class);
+             qr.setString("MaNV", nv.getMaNhanVien());
+             qr.setString("MK",nv.getMatKhau());
+             qr.setString("CauHoi",nv.getCauHoiBaoMat());
+             qr.setString("DapAn",nv.getDapAnBaoMat());
+             qr.setString("HoTen",nv.getHoTen());
+             qr.setDate("SN", nv.getSinhNhat());
+             qr.setInteger("SDT", nv.getSodt());
+             qr.setInteger("CMND", nv.getCmnd());
+             qr.setString("MaVT",nv.getVitrinhanvien().getMaViTri());
+             qr.setString("MaTDVT",nv.getTrinhdovitinh().getMaTdvt());
+             qr.setDate("NgayVao", nv.getNgayBatDau());
+             qr.setBoolean("TrangPhuc", nv.isTrangPhuc());
+             qr.setInteger("LuongTheoCa", nv.getLuongTheoCa());
+             qr.executeUpdate();
+             ss.getTransaction().commit();
+             return true;
+         } catch (Exception e) {
+             e.toString();
+             sf.getCurrentSession().getTransaction().rollback();
+             return false;
+         }
+     }
 }

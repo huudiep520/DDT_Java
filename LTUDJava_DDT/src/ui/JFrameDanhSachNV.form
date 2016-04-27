@@ -37,6 +37,7 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanelDSNV" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanelChucNangDSNV" min="-2" max="-2" attributes="0"/>
@@ -58,9 +59,17 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" pref="1294" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jScrollPane1" alignment="0" pref="1294" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jtxtFilter" min="-2" pref="242" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -68,6 +77,10 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jtxtFilter" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jScrollPane1" pref="281" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -100,6 +113,19 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JTextField" name="jtxtFilter">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="T&#xec;m ki&#x1ebf;m"/>
+          </Properties>
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtxtFilterKeyReleased"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel11">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="T&#xec;m nh&#xe2;n vi&#xea;n :"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="jPanelChucNangDSNV">
@@ -149,29 +175,22 @@
                           </Group>
                           <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jtxtLuongTheoCa" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jtxtCMND" pref="143" max="32767" attributes="0"/>
-                                      <Component id="jCbbTDVT" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jtxtLuongTheoCa" max="32767" attributes="0"/>
+                              <Component id="jtxtCMND" pref="143" max="32767" attributes="0"/>
+                              <Component id="jCbbTDVT" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jbtnUpdate" pref="99" max="32767" attributes="0"/>
-                      <Component id="jButton1" max="32767" attributes="0"/>
+                      <Component id="jbtnLichLam" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -233,7 +252,7 @@
                               <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                   <Component id="jtxtLuongTheoCa" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jbtnThoat" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jbtnLichLam" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="103" alignment="0" groupAlignment="3" attributes="0">
@@ -249,7 +268,7 @@
                       <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jcbDangLam" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="24" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -261,6 +280,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jtxtHoTen">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Nh&#x1ead;p v&#xe0;o h&#x1ecd; t&#xea;n"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
@@ -273,6 +295,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jtxtDT">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Nh&#x1ead;p s&#x1ed1; &#x111;i&#x1ec7;n tho&#x1ea1;i"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
@@ -280,6 +305,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jtxtCMND">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="S&#x1ed1; CMND "/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
@@ -312,8 +340,14 @@
           </Properties>
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="jDCNgaySinh">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Nh&#x1ead;p v&#xe0;o ng&#xe0;y sinh"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jtxtLuongTheoCa">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="L&#x1b0;&#x1a1;ng theo m&#x1ed7;i ca"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JCheckBox" name="jcbDangLam">
           <Properties>
@@ -323,6 +357,7 @@
         <Component class="javax.swing.JButton" name="jbtnUpdate">
           <Properties>
             <Property name="text" type="java.lang.String" value="C&#x1ead;p Nh&#x1ead;t"/>
+            <Property name="toolTipText" type="java.lang.String" value="C&#x1ead;p nh&#x1ead;t l&#x1ea1;i th&#xf4;ng tin c&#x1ee7;a nh&#xe2;n vi&#xea;n"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtnUpdateActionPerformed"/>
@@ -331,6 +366,7 @@
         <Component class="javax.swing.JButton" name="jbtnThoat">
           <Properties>
             <Property name="text" type="java.lang.String" value="Tho&#xe1;t"/>
+            <Property name="toolTipText" type="java.lang.String" value="R&#x1edd;i kh&#x1ecf;i c&#x1eed;a s&#x1ed5; l&#xe0;m vi&#x1ec7;c"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtnThoatActionPerformed"/>
@@ -339,17 +375,25 @@
         <Component class="javax.swing.JButton" name="jbtnXoa">
           <Properties>
             <Property name="text" type="java.lang.String" value="X&#xf3;a nh&#xe2;n vi&#xea;n"/>
+            <Property name="toolTipText" type="java.lang.String" value="X&#xf3;a nh&#xe2;n vi&#xea;n ra kh&#x1ecf;i h&#x1ec7; th&#x1ed1;ng"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtnXoaActionPerformed"/>
           </Events>
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="jDCNgayVao">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Nh&#x1ead;p ng&#xe0;y b&#x1eaf;t &#x111;&#x1ea7;u l&#xe0;m vi&#x1ec7;c"/>
+          </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="jbtnLichLam">
           <Properties>
             <Property name="text" type="java.lang.String" value="L&#x1ecb;ch l&#xe0;m"/>
+            <Property name="toolTipText" type="java.lang.String" value="Xem l&#x1ecb;ch l&#xe0;m c&#x1ee7;a nh&#xe2;n vi&#xea;n &#x111;&#x1b0;&#x1ee3;c ch&#x1ecd;n"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtnLichLamActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="jCbbViTri">
           <Properties>
@@ -364,6 +408,7 @@
                 <StringItem index="6" value="Nh&#xe2;n Vi&#xea;n Ti&#x1ebf;p T&#xe2;n"/>
               </StringArray>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="X&#xe1;c &#x111;&#x1ecb;nh v&#x1ecb; tr&#xed; c&#x1ee7;a nh&#xe2;n vi&#xea;n"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -379,6 +424,7 @@
                 <StringItem index="3" value="Kh&#xe1;c"/>
               </StringArray>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Tr&#xec;nh &#x111;&#x1ed9; vi t&#xed;nh"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
