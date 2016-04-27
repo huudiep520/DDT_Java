@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-04-16 17:37:24
+Date: 2016-04-25 18:01:22
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -25,25 +25,31 @@ CREATE TABLE `banghe` (
   `SoLuongKhach` int(11) NOT NULL,
   `SoKhachToiDa` int(11) NOT NULL,
   `MaTrangThai` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `xoa` bit(1) NOT NULL DEFAULT b'0',
+  `xoa` varchar(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
   PRIMARY KEY (`MaBan`),
   KEY `fk_BG_NV` (`MaNhanVienTruc`),
   KEY `fk_BG_TT` (`MaTrangThai`),
-  CONSTRAINT `FK_q2qsd9f9b2mjl3nk2frbld0qa` FOREIGN KEY (`MaTrangThai`) REFERENCES `trangthai` (`MaTT`),
   CONSTRAINT `fk_BG_NV` FOREIGN KEY (`MaNhanVienTruc`) REFERENCES `nhanvien` (`MaNhanVien`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `fk_BG_TT` FOREIGN KEY (`MaTrangThai`) REFERENCES `trangthai` (`MaTT`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  CONSTRAINT `FK_dyveoyxqbsrqjv2l425pts8jv` FOREIGN KEY (`MaNhanVienTruc`) REFERENCES `nhanvien` (`MaNhanVien`)
+  CONSTRAINT `FK_dyveoyxqbsrqjv2l425pts8jv` FOREIGN KEY (`MaNhanVienTruc`) REFERENCES `nhanvien` (`MaNhanVien`),
+  CONSTRAINT `FK_q2qsd9f9b2mjl3nk2frbld0qa` FOREIGN KEY (`MaTrangThai`) REFERENCES `trangthai` (`MaTT`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of banghe
 -- ----------------------------
-INSERT INTO `banghe` VALUES ('A1', null, '0', '4', 'TTBG01', '');
-INSERT INTO `banghe` VALUES ('A2', null, '0', '2', 'TTBG01', '');
-INSERT INTO `banghe` VALUES ('B1', null, '0', '2', 'TTBG01', '');
-INSERT INTO `banghe` VALUES ('B2', null, '0', '4', 'TTBG01', '');
-INSERT INTO `banghe` VALUES ('C1', null, '0', '6', 'TTBG01', '');
-INSERT INTO `banghe` VALUES ('C2', null, '0', '6', 'TTBG01', '');
+INSERT INTO `banghe` VALUES ('A1', null, '0', '4', 'TTBG03', '0');
+INSERT INTO `banghe` VALUES ('A2', null, '0', '2', 'TTBG01', '0');
+INSERT INTO `banghe` VALUES ('A3', 'NV04', '0', '4', 'TTBG01', '0');
+INSERT INTO `banghe` VALUES ('A4', null, '0', '6', 'TTBG01', '0');
+INSERT INTO `banghe` VALUES ('A5', null, '0', '4', 'TTBG01', '0');
+INSERT INTO `banghe` VALUES ('A6', null, '0', '4', 'TTBG01', '0');
+INSERT INTO `banghe` VALUES ('B1', null, '0', '2', 'TTBG01', '0');
+INSERT INTO `banghe` VALUES ('B2', null, '0', '4', 'TTBG02', '0');
+INSERT INTO `banghe` VALUES ('B3', null, '0', '4', 'TTBG03', '0');
+INSERT INTO `banghe` VALUES ('B4', null, '0', '6', 'TTBG04', '0');
+INSERT INTO `banghe` VALUES ('B5', null, '2', '2', 'TTBG04', '0');
+INSERT INTO `banghe` VALUES ('B6', null, '0', '4', 'TTBG01', '0');
 
 -- ----------------------------
 -- Table structure for `bangluong`
@@ -90,17 +96,17 @@ CREATE TABLE `chitietgoimenu` (
   `MaCTG` int(11) NOT NULL AUTO_INCREMENT,
   `MaBan` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `MaMenu` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `MaTrangThai` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `TenGoi` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `SoLuongGoi` int(11) NOT NULL,
   `GhiChu` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `ThoiGianGoi` time NOT NULL,
+  `MaTrangThai` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`MaCTG`),
   KEY `FK_t4y3589rwpsv7leu8re8i39ap` (`MaBan`),
   KEY `FK_cafmffi2esgue53knm1pnmjmd` (`MaMenu`),
   KEY `FK_sexim4h2ykb4fu9143og99p4w` (`MaTrangThai`),
-  CONSTRAINT `FK_sexim4h2ykb4fu9143og99p4w` FOREIGN KEY (`MaTrangThai`) REFERENCES `trangthai` (`MaTT`),
   CONSTRAINT `FK_cafmffi2esgue53knm1pnmjmd` FOREIGN KEY (`MaMenu`) REFERENCES `menu` (`MaMenu`),
+  CONSTRAINT `FK_sexim4h2ykb4fu9143og99p4w` FOREIGN KEY (`MaTrangThai`) REFERENCES `trangthai` (`MaTT`),
   CONSTRAINT `FK_t4y3589rwpsv7leu8re8i39ap` FOREIGN KEY (`MaBan`) REFERENCES `banghe` (`MaBan`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -123,8 +129,8 @@ CREATE TABLE `chitiethoadon` (
   PRIMARY KEY (`MaCTHD`),
   KEY `FK_drimu40nfjst5si8utgdq2r48` (`MaHD`),
   KEY `FK_l2dhch3owj625awetnytmdq6i` (`MaMenu`),
-  CONSTRAINT `FK_l2dhch3owj625awetnytmdq6i` FOREIGN KEY (`MaMenu`) REFERENCES `menu` (`MaMenu`),
-  CONSTRAINT `FK_drimu40nfjst5si8utgdq2r48` FOREIGN KEY (`MaHD`) REFERENCES `hoadon` (`MaHD`)
+  CONSTRAINT `FK_drimu40nfjst5si8utgdq2r48` FOREIGN KEY (`MaHD`) REFERENCES `hoadon` (`MaHD`),
+  CONSTRAINT `FK_l2dhch3owj625awetnytmdq6i` FOREIGN KEY (`MaMenu`) REFERENCES `menu` (`MaMenu`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
@@ -148,8 +154,8 @@ CREATE TABLE `hoadon` (
   PRIMARY KEY (`MaHD`),
   KEY `FK_82k5tmkfpxo6dygxcr2d6miw6` (`MaBan`),
   KEY `FK_hvekqwdihjcthloqyh3xb44ip` (`MaNhanVien`),
-  CONSTRAINT `FK_hvekqwdihjcthloqyh3xb44ip` FOREIGN KEY (`MaNhanVien`) REFERENCES `nhanvien` (`MaNhanVien`),
-  CONSTRAINT `FK_82k5tmkfpxo6dygxcr2d6miw6` FOREIGN KEY (`MaBan`) REFERENCES `banghe` (`MaBan`)
+  CONSTRAINT `FK_82k5tmkfpxo6dygxcr2d6miw6` FOREIGN KEY (`MaBan`) REFERENCES `banghe` (`MaBan`),
+  CONSTRAINT `FK_hvekqwdihjcthloqyh3xb44ip` FOREIGN KEY (`MaNhanVien`) REFERENCES `nhanvien` (`MaNhanVien`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
@@ -171,8 +177,8 @@ CREATE TABLE `lichcalamviec` (
   KEY `FK_6fwk2iaqnmchl2crkck7d89n5` (`MaCa`),
   KEY `FK_ksk6p3ojuuokbsmaa5t1tqgsr` (`MaNhanVien`),
   KEY `FK_dcns4hay0w0f73xf04dtmnu0w` (`MaTrangThai`),
-  CONSTRAINT `FK_dcns4hay0w0f73xf04dtmnu0w` FOREIGN KEY (`MaTrangThai`) REFERENCES `trangthai` (`MaTT`),
   CONSTRAINT `FK_6fwk2iaqnmchl2crkck7d89n5` FOREIGN KEY (`MaCa`) REFERENCES `calamviec` (`MaCa`),
+  CONSTRAINT `FK_dcns4hay0w0f73xf04dtmnu0w` FOREIGN KEY (`MaTrangThai`) REFERENCES `trangthai` (`MaTT`),
   CONSTRAINT `FK_ksk6p3ojuuokbsmaa5t1tqgsr` FOREIGN KEY (`MaNhanVien`) REFERENCES `nhanvien` (`MaNhanVien`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -219,8 +225,8 @@ CREATE TABLE `nhanvien` (
   PRIMARY KEY (`MaNhanVien`),
   KEY `fk_NV_VT` (`MaViTri`),
   KEY `fk_NV_TDVT` (`MaTDVT`),
-  CONSTRAINT `FK_l9sr6y2n5bhscxbpuq8bpy5oh` FOREIGN KEY (`MaViTri`) REFERENCES `vitrinhanvien` (`MaViTri`),
   CONSTRAINT `FK_9uqk46movrc2qg959nua6ehlf` FOREIGN KEY (`MaTDVT`) REFERENCES `trinhdovitinh` (`MaTDVT`),
+  CONSTRAINT `FK_l9sr6y2n5bhscxbpuq8bpy5oh` FOREIGN KEY (`MaViTri`) REFERENCES `vitrinhanvien` (`MaViTri`),
   CONSTRAINT `fk_NV_TDVT` FOREIGN KEY (`MaTDVT`) REFERENCES `trinhdovitinh` (`MaTDVT`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `fk_NV_VT` FOREIGN KEY (`MaViTri`) REFERENCES `vitrinhanvien` (`MaViTri`) ON DELETE NO ACTION ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -373,6 +379,20 @@ END
 DELIMITER ;
 
 -- ----------------------------
+-- Procedure structure for `sp_GetBanGheById`
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `sp_GetBanGheById`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_GetBanGheById`(
+	maBan varchar(10)
+)
+BEGIN
+	select bg.* from banghe bg where bg.MaBan = maBan;
+END
+;;
+DELIMITER ;
+
+-- ----------------------------
 -- Procedure structure for `sp_GetNhanVien`
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `sp_GetNhanVien`;
@@ -380,6 +400,88 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_GetNhanVien`()
 BEGIN
 	select * from Nhanvien;
+END
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Procedure structure for `sp_GetNhanVienById`
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `sp_GetNhanVienById`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_GetNhanVienById`(
+	idNV varchar(10)
+)
+BEGIN
+	select * from nhanvien nv where nv.MaNhanVien = idNV;
+END
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Procedure structure for `sp_GetPermission`
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `sp_GetPermission`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_GetPermission`(
+	maNV varchar(10),
+    mkNV varchar(16)
+)
+BEGIN
+	select pq.* from nhanvien nv, vitrinhanvien vtnv, phanquyen pq
+    where nv.MaViTri = vtnv.MaViTri and vtnv.MaQuyen = pq.MaQuyen and nv.MaNhanVien = maNV and nv.MatKhau = mkNV;
+END
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Procedure structure for `sp_GetTrangThaiBanGhe`
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `sp_GetTrangThaiBanGhe`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_GetTrangThaiBanGhe`()
+BEGIN
+	select * from trangthai where MaTT like '%TTBG%';
+END
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Procedure structure for `sp_UpdateSoLuongKhach`
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `sp_UpdateSoLuongKhach`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_UpdateSoLuongKhach`(
+	soLuongKH int,
+    idTab varchar(10)
+)
+BEGIN
+	update banghe bg set bg.SoLuongKhach = soLuongKH where bg.MaBan = idTab;
+END
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Procedure structure for `sp_UpdateStatusTable`
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `sp_UpdateStatusTable`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_UpdateStatusTable`(
+	idST varchar(10),
+    idTab varchar(10)
+)
+BEGIN
+	if idST='1' then
+			UPDATE banghe set MaTrangThai = 'TTBG01' where MaBan = idTab; /*bàn trống*/
+		elseif idST='2' then
+			UPDATE banghe set MaTrangThai = 'TTBG02' where MaBan = idTab; /*bàn có khách*/
+		elseif idST='3' then
+			UPDATE banghe set MaTrangThai = 'TTBG03' where MaBan = idTab; /*đang đợi món*/
+		elseif idST='4' then
+			UPDATE banghe set MaTrangThai = 'TTBG04' where MaBan = idTab; /*món đã đủ*/
+    end if;
+    /*select * from banghe bg where bg.MaBan = idTab;*/
+    /*update banghe set MaTrangThai = 'TTBG01' where MaBan = idTab; bàn trống*/
 END
 ;;
 DELIMITER ;

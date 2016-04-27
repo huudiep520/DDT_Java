@@ -56,7 +56,8 @@ public class JFrameLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(null, new java.awt.Color(0, 0, 102)));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 204));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 204));
@@ -99,6 +100,16 @@ public class JFrameLogin extends javax.swing.JFrame {
         });
 
         jPasswordFieldPass.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jPasswordFieldPass.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPasswordFieldPassMouseClicked(evt);
+            }
+        });
+        jPasswordFieldPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordFieldPassActionPerformed(evt);
+            }
+        });
 
         jLabelLoginFalse.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabelLoginFalse.setForeground(new java.awt.Color(255, 0, 0));
@@ -155,7 +166,7 @@ public class JFrameLogin extends javax.swing.JFrame {
         );
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 0, 204));
+        jLabel1.setForeground(new java.awt.Color(0, 0, 255));
         jLabel1.setText("Phần mềm quản lý nhà hàng");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -163,13 +174,13 @@ public class JFrameLogin extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(90, 90, 90)
+                .addGap(50, 50, 50)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(206, 206, 206))
+                .addGap(165, 165, 165))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,7 +189,7 @@ public class JFrameLogin extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -194,26 +205,25 @@ public class JFrameLogin extends javax.swing.JFrame {
 
         List<Nhanvien> lstNV = nvd.CheckLogin(strUser, strPass);
         if (lstNV.size() > 0) {
-            List<Phanquyen> getPermission = pqd.GetPermission(strUser, strPass);
-            if (getPermission.size() > 0) {
-                Phanquyen pq = getPermission.get(0);
-                String strNamePer = pq.getTenGoi();
-                try {
-                    if ("Nhân Viên Thu Ngân".equals(strNamePer)) {
-                        nv = lstNV.get(0);
-                        JFrameTable jf = new JFrameTable();
-
-                    } else {
-                        jLabelLoginFalse.setVisible(true);
-                    }
+            List<Phanquyen> lstPQ = pqd.GetPermission(strUser, strPass);
+            if (lstPQ.size() > 0) {
+                String per = lstPQ.get(0).getTenGoi(); /// lấy quyền
+                
+                /*phân quyền*/
+                if ("Nhân Viên Thu Ngân".equals(per)) {
+                    nv = lstNV.get(0);
+                    JFrameTable jf = new JFrameTable();
                     jLabelLoginFalse.setVisible(false);
                     this.setVisible(false);
+                } else {
+                    jLabelLoginFalse.setVisible(true);
                 }
-                
-            catch (Exception e) {
-                      jLabelLoginFalse.setVisible(true);  
-                }
+            } else {
+                jLabelLoginFalse.setVisible(true);
             }
+        }
+        else{
+            jLabelLoginFalse.setVisible(true);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -224,6 +234,14 @@ public class JFrameLogin extends javax.swing.JFrame {
     private void jTextFieldUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldUserMouseClicked
         jLabelLoginFalse.setVisible(false);
     }//GEN-LAST:event_jTextFieldUserMouseClicked
+
+    private void jPasswordFieldPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldPassActionPerformed
+         jLabelLoginFalse.setVisible(false);
+    }//GEN-LAST:event_jPasswordFieldPassActionPerformed
+
+    private void jPasswordFieldPassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordFieldPassMouseClicked
+         jLabelLoginFalse.setVisible(false);
+    }//GEN-LAST:event_jPasswordFieldPassMouseClicked
 
     /**
      * @param args the command line arguments

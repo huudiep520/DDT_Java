@@ -5,29 +5,25 @@
  */
 package dao;
 
-import entities.*;
+import entities.Trangthai;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-
-public class PhanQuyenDAO {
+/**
+ *
+ * @author xFactor520
+ */
+public class TrangThaiDAO {
     private final SessionFactory sf = HibernateUtil.getSessionFactory();
     
-    public List<Phanquyen> GetPermission(String user, String pass){
+    public List<Trangthai> GetTrangThaiBanGhe(){
         Session ss = sf.getCurrentSession();
         ss.beginTransaction();
-       // String per="";
-        Query qr = ss.createSQLQuery("CALL sp_GetPermission(:user, :pass)").addEntity(Phanquyen.class);
-        qr.setString("user", user);
-        qr.setString("pass", pass);
-        //qr.setString("per", per);
-        
-        List<Phanquyen> lstPQ = qr.list();
-        //per = lstPQ.get(0).toString();
-        //qr.executeUpdate();
+        Query qr = ss.createSQLQuery("CALL sp_GetTrangThaiBanGhe()").addEntity(Trangthai.class);
+        List<Trangthai> lstTT = qr.list();
         ss.close();
-        return lstPQ;
+        return lstTT;
     }
 }

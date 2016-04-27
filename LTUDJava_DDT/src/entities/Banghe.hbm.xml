@@ -8,10 +8,10 @@
             <column name="MaBan" length="10" />
             <generator class="assigned" />
         </id>
-        <many-to-one name="nhanvien" class="entities.Nhanvien" fetch="select">
+        <many-to-one name="nhanvien" class="entities.Nhanvien" lazy="false" fetch="select">
             <column name="MaNhanVienTruc" length="10" />
         </many-to-one>
-        <many-to-one name="trangthai" class="entities.Trangthai" fetch="select">
+        <many-to-one name="trangthai" class="entities.Trangthai" lazy="false" fetch="select">
             <column name="MaTrangThai" length="10" />
         </many-to-one>
         <property name="soLuongKhach" type="int">
